@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Election Process Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- API Key Modal -->
+  <div class="modal-overlay hidden" id="apiModal">
+    <div class="modal">
+      <h2>🗝️ Enter Gemini API Key</h2>
+      <p>
+        To power the AI assistant, please provide your Google Gemini API key.
+        Your key is stored only in your browser session and never sent anywhere
+        except directly to the Gemini API.
+      </p>
+      <input
+        class="modal-input"
+        id="apiKeyInput"
+        type="password"
+        placeholder="AIza..."
+        autocomplete="off"
+      />
+      <div class="modal-actions">
+        <button class="btn-secondary" id="skipApiBtn">Use Demo Mode</button>
+        <button class="btn-primary" id="saveApiBtn">Connect</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-brand">
+      <div class="header-logo">🗳️</div>
+      <div>
+        <div class="header-title">Election Process Assistant</div>
+        <div class="header-subtitle">Powered by Google Gemini AI</div>
+      </div>
+    </div>
+    <button class="api-status" id="apiStatusBtn" title="Click to configure API key">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Configure AI</span>
+    </button>
+  </header>
+
+  <!-- Body -->
+  <div class="app-body">
+
+    <!-- Sidebar: Election Timeline -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>📋 Election Timeline</h2>
+      </div>
+      <div class="sidebar-scroll">
+        <div class="timeline" id="timeline"></div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">💡 Quick Questions</div>
+          <button class="quick-btn" data-q="What are the main steps of the election process?">
+            Main steps of the election process
+          </button>
+          <button class="quick-btn" data-q="How do I register to vote and what are the deadlines?">
+            Voter registration &amp; deadlines
+          </button>
+          <button class="quick-btn" data-q="What happens on Election Day and how does voting work?">
+            What happens on Election Day?
+          </button>
+          <button class="quick-btn" data-q="How are votes counted and results certified?">
+            Vote counting &amp; certification
+          </button>
+          <button class="quick-btn" data-q="What is the Electoral College and how does it work?">
+            Electoral College explained
+          </button>
+          <button class="quick-btn" data-q="How can I run for office? What is the candidacy process?">
+            Running for office
+          </button>
+          <button class="quick-btn" data-q="What types of elections exist (primary, general, special)?">
+            Types of elections
+          </button>
+          <button class="quick-btn" data-q="How are election results challenged or disputed?">
+            Election disputes &amp; recounts
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Chat -->
+    <main class="chat-area">
+      <div class="chat-messages" id="chatMessages">
+
+        <!-- Welcome card -->
+        <div class="welcome-card">
+          <h1>👋 Hi! I'm your Election Guide</h1>
+          <p>
+            I can help you understand every aspect of the democratic election
+            process — from voter registration and primary elections all the way
+            to inauguration day. Ask me anything!
+          </p>
+          <div class="welcome-chips">
+            <button class="welcome-chip" data-q="Give me an overview of the entire election process">
+              🗳️ Full overview
+            </button>
+            <button class="welcome-chip" data-q="How do I register to vote?">
+              📝 Register to vote
+            </button>
+            <button class="welcome-chip" data-q="Explain the Electoral College step by step">
+              🏛️ Electoral College
+            </button>
+            <button class="welcome-chip" data-q="What are primary elections and how do they work?">
+              🔍 Primary elections
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Input bar -->
+      <div class="chat-input-area">
+        <div class="chat-input-row">
+          <textarea
+            id="userInput"
+            rows="1"
+            placeholder="Ask me anything about the election process…"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" title="Send message">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <div class="input-hint">
+          Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
